@@ -1,0 +1,7 @@
+{
+  "type": "arcanum:forgotten_chamber",
+  "biomes": "#arcanum:has_structure/forgotten_chamber",
+  "step": "underground_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none"
+}

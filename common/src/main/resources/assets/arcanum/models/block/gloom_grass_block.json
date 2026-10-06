@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "arcanum:block/gloom_grass_block_top",
+    "side": "arcanum:block/gloom_grass_block_side",
+    "bottom": "arcanum:block/gloom_soil"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.arcanum.fabric.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "CustomHeadLayerMixin",
+    "ElytraLayerMixin",
+    "HumanoidArmorLayerMixin",
+    "ItemInHandLayerMixin",
+    "MouseHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

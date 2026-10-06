@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "arcanum:arcanewood_planks"
+    }
+  },
+  "result": {
+    "item": "arcanum:arcanewood_door",
+    "count": 3
+  }
+}

@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        maven { url "https://maven.fabricmc.net/" }
+        maven { url "https://maven.architectury.dev/" }
+        maven { url "https://maven.minecraftforge.net/" }
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    // JDK17'yi Gradle toolchain otomatik indirsin (makinedeki java surumu onemsizlesir)
+    id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
+}
+
+rootProject.name = "arcanum"
+
+include("common")
+include("fabric")
+include("forge")

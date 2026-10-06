@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "arcanum:arcanewood_log"
+    }
+  ],
+  "result": {
+    "item": "arcanum:arcanewood_planks",
+    "count": 4
+  }
+}

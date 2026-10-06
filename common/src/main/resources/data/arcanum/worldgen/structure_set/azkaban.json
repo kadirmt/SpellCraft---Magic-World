@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "arcanum:azkaban",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 52,
+    "separation": 26,
+    "salt": 522613
+  }
+}

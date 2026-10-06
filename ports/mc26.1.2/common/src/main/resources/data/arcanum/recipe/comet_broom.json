@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "FAF",
+    " G "
+  ],
+  "key": {
+    "A": "arcanum:arcanewood_planks",
+    "F": "minecraft:feather",
+    "G": "minecraft:gold_ingot"
+  },
+  "result": { "id": "arcanum:comet_broom", "count": 1 }
+}

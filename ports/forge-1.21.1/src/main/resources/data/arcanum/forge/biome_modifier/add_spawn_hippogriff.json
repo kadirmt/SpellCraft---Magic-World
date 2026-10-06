@@ -1,0 +1,7 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": ["minecraft:windswept_hills", "minecraft:windswept_gravelly_hills", "minecraft:meadow", "minecraft:windswept_forest"],
+  "spawners": [
+    { "type": "arcanum:hippogriff", "weight": 18, "minCount": 1, "maxCount": 1 }
+  ]
+}

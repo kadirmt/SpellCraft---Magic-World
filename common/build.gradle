@@ -1,0 +1,15 @@
+architectury {
+    common rootProject.enabled_platforms.split(",")
+}
+
+dependencies {
+    // Loom dev ortamı için common'da fabric-loader gerekir
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    // Cross-loader API (Registry/Event soyutlamaları) — common'da kullanılır
+    modApi "dev.architectury:architectury:${rootProject.architectury_api_version}"
+    // GeckoLib — common'da yalnızca derleme için (GeoItem vb. arayüzler)
+    modCompileOnly "software.bernie.geckolib:geckolib-fabric-1.21.1:${rootProject.geckolib_version}"
+    // Fabric API — common'da yalnızca derleme için (FabricItem arayüzü, NBT/komponent
+    // değişince asa animasyonunun yeniden kuşanma pozuna dönmesini engellemek için)
+    modCompileOnly "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+}

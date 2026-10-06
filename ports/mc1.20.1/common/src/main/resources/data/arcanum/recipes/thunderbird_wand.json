@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  T",
+    " W ",
+    "F  "
+  ],
+  "key": {
+    "T": {
+      "item": "arcanum:thunderbird_feather"
+    },
+    "W": {
+      "item": "arcanum:arcanewood_wand"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "arcanum:thunderbird_wand",
+    "count": 1
+  }
+}

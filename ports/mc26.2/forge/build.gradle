@@ -1,0 +1,155 @@
+// Arcanum — MinecraftForge 26.2 portu (ForgeGradle 7, tek modul, Architectury YOK)
+// Temel: resmi Forge 26.2 MDK + MDKExamples 'mixins-only/fg7' (ports/_planning26/res-forge.md §C)
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+
+version = mod_version
+group = maven_group
+base.archivesName = "arcanum-forge-${minecraft_version}"   // -> arcanum-forge-26.2-0.0.1.jar
+
+// Mojang ships Java 25 to end users in 26.1+, so the mod targets Java 25.
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+sourceSets.main {
+    // FAZ 2 (acildi): ortak kod loader build'inde YENIDEN derlenir (ARCHITECTURE §2) ---
+    java      { srcDir "${projectDir}/../common/src/main/java" }
+    resources { srcDir "${projectDir}/../common/src/main/resources" }
+}
+
+// DEV-ONLY istemci test duzenegi (ports/mc26.2/devtest, ports/_planning26/g4-devtest.md):
+// ayri sourceSet (kendi mods.toml'u, modId "arcanum_devtest") -> ana jar'a GIRMEZ. FG7 her sourceSet icin
+// run gorevi uretir (SourceSet.getTaskName("run", <run>)): devtestRuntimeClasspath minecraft bagimliligini
+// (implementation'dan) tasidigi icin 'runDevtestClient' dogar; sinif yolu = devtest + main ciktisi -> FML
+// ClasspathLocator iki META-INF/mods.toml kokunu de ayri mod olarak bulur (merge-source-sets: build/sourceSets/<ad>).
+sourceSets {
+    devtest {
+        java      { srcDirs = ["${projectDir}/../devtest/src/main/java", "${projectDir}/../devtest/forge/src/main/java"] }
+        resources { srcDirs = ["${projectDir}/../devtest/forge/src/main/resources"] }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+configurations {
+    devtestImplementation.extendsFrom implementation
+    devtestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+minecraft {
+    // mappings satiri YOK: FG7 varsayilani 'official' (26.x MDK'si da yazmiyor)
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+
+            systemProperty 'eventbus.api.strictRuntimeChecks', 'true'   // yalniz dev
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+
+            // Mixin: dev run'larda config komut satiri arg'iyla verilmek zorunda
+            // (jar manifest'indeki MixinConfigs yalniz production'da okunur)
+            args "--mixin.config=${mod_id}.mixins.json"
+        }
+
+        register('client') {
+            workingDir = layout.projectDirectory.dir('run-client')
+            // DEV-ONLY duzenek ayarlari yalniz devtest sourceSet'inin run'ina (runDevtestClient) gecer;
+            // -Parcanum.devtest=<liste> (+ .out/.world/.quit) verilmezse duzenek HICBIR SEY yapmaz.
+            with(sourceSets.devtest) {
+                ['arcanum.devtest', 'arcanum.devtest.out', 'arcanum.devtest.world', 'arcanum.devtest.quit'].each { k ->
+                    def v = project.findProperty(k)
+                    if (v != null) {
+                        systemProperty k, v.toString()
+                    }
+                }
+            }
+        }
+
+        register('server') {
+            args '--nogui'
+        }
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it) // EN USTTE kalmali (FG7 siralama uyarisi)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+
+    // GeckoLib 5 — GROUP com.geckolib (software.bernie.geckolib DEGIL)
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter { includeGroupAndSubgroups 'com.geckolib' }
+    }
+
+    // TerraBlender (maven.minecraftforge.net uzerinde yayimlaniyor)
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'TerraBlender'
+                url = 'https://maven.minecraftforge.net'
+            }
+        }
+        filter { includeGroup 'com.github.glitchfiend' }
+    }
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+    annotationProcessor "net.minecraftforge:eventbus-validator:${eventbus_version}"
+
+    // transitive=false SART: GeckoLib metadata'si runtime'da kendi Forge surumunu dayatiyor (res-forge §A.8)
+    implementation("com.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}") { transitive = false }
+    implementation("com.github.glitchfiend:TerraBlender-forge:${terrablender_version}")   { transitive = false }
+
+    // Mixin AP YOK (ARCHITECTURE §4): 26.x'te refmap gerekmez; anotasyonlar Forge userdev ile gelir.
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        // Production'da Mixin'in bizi bulmasi icin config jar manifest'ine yazilir
+        attributes['MixinConfigs'] = "${mod_id}.mixins.json"
+    }
+    // G8 KORUMA: merge-source-sets=true -> compileJava ve processResources AYNI dizine (build/sourceSets/main) yazar.
+    // G8 ilk temiz derlemesinde (onceki G6 build gecmisiyle) jar SINIFSIZ cikti (576 girdi, 0 .class, 777 789 B) —
+    // processResources'in onceki calismasi sinif dosyalarini kendi ciktisi sanip temizledi. Sinifsiz/eksik jar
+    // bir daha SESSIZCE uretilmesin: jar yazildiktan sonra sinif sayisi denetlenir.
+    doLast { t ->
+        def f = t.archiveFile.get().asFile
+        int n = 0
+        new java.util.zip.ZipFile(f).withCloseable { z -> n = z.entries().toList().count { it.name.endsWith('.class') } }
+        if (n < 200) {
+            throw new GradleException("Yayin jar'i eksik: ${f.name} icinde yalniz ${n} .class var (beklenen ~264). 'clean' ile yeniden derleyin.")
+        }
+        t.logger.lifecycle("jar sinif denetimi: ${n} .class")
+    }
+}
+// Ayni cikti dizinine yazan iki gorev es zamanli kosmasin (configuration-cache proje ici paralellik acar)
+tasks.named('processResources') { mustRunAfter 'compileJava' }
+
+// DEV-ONLY: arcanum_devtest jari (G8 uretim istemci testi icin; YAYINA GIRMEZ). build/assemble'a bagli DEGIL,
+// build/libs'e yazmaz -> ana jar etkilenmez. Calistir: gradlew devtestJar --no-configuration-cache
+tasks.register('devtestJar', Jar) {
+    group = 'build'
+    description = 'DEV-ONLY arcanum_devtest jari (uretim istemci testi icin; yayina girmez)'
+    archiveBaseName = "arcanum_devtest-forge-${minecraft_version}"
+    archiveVersion = '0.0.1-dev'
+    destinationDirectory = layout.buildDirectory.dir('devtest-libs')
+    from sourceSets.devtest.output
+}
+
+// Derleme döngüsü tüm hataları tek turda görsün (javac varsayılanı 100'de keser)
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xmaxerrs', '10000']
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  N",
+    " W ",
+    "E  "
+  ],
+  "key": {
+    "N": { "item": "minecraft:nether_star" },
+    "W": { "item": "arcanum:phoenix_wand" },
+    "E": { "item": "minecraft:echo_shard" }
+  },
+  "result": { "id": "arcanum:elder_wand", "count": 1 }
+}

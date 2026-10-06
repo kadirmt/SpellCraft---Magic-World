@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "arcanum:item/sorting_hat"
+  },
+  "oversized_in_gui": true
+}

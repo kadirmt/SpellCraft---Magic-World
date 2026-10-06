@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+      { "model": "arcanum:block/gloom_grass_block" },
+      { "model": "arcanum:block/gloom_grass_block", "y": 90 },
+      { "model": "arcanum:block/gloom_grass_block", "y": 180 },
+      { "model": "arcanum:block/gloom_grass_block", "y": 270 }
+    ]
+  }
+}

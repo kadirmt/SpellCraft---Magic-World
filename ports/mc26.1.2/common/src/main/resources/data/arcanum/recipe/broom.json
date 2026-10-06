@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "FHT",
+    " S "
+  ],
+  "key": {
+    "P": "arcanum:arcanewood_planks",
+    "H": "minecraft:hay_block",
+    "F": "arcanum:phoenix_feather",
+    "T": "arcanum:thunderbird_feather",
+    "S": "arcanum:snowy_owl_feather"
+  },
+  "result": { "id": "arcanum:broom", "count": 1 }
+}

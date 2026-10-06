@@ -1,0 +1,18 @@
+{
+  "given_item_modifiers": [
+    {
+      "function": "minecraft:set_count",
+      "count": 12.0
+    }
+  ],
+  "gives": {
+    "id": "arcanum:starter_spell_book"
+  },
+  "max_uses": 12.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 4.0,
+    "id": "minecraft:emerald"
+  },
+  "xp": 5.0
+}

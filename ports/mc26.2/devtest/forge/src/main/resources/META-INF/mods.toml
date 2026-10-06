@@ -1,0 +1,18 @@
+# DEV-ONLY: yalniz runDevtestClient sinif yolunda; yayin jar'ina GIRMEZ.
+modLoader="javafml"
+loaderVersion="[65,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="arcanum_devtest"
+version="0.0.1-dev"
+displayName="Arcanum DevTest (dev-only)"
+authors="Kadir Mert"
+description='''Arcanum icin yalniz gelistirme ortaminda calisan otomatik istemci senaryo + ekran goruntusu duzenegi.'''
+
+[[dependencies.arcanum_devtest]]
+    modId="arcanum"
+    mandatory=true
+    versionRange="*"
+    ordering="AFTER"
+    side="CLIENT"

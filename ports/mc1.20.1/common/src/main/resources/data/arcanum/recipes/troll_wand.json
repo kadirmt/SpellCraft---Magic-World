@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  H",
+    " W ",
+    "I  "
+  ],
+  "key": {
+    "H": {
+      "item": "arcanum:troll_hide"
+    },
+    "W": {
+      "item": "arcanum:arcanewood_wand"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "arcanum:troll_wand",
+    "count": 1
+  }
+}

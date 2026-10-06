@@ -1,0 +1,38 @@
+{
+  "parent": "arcanum:first_wand",
+  "criteria": {
+    "has_dark_book": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcanum:dark_spell_book"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.arcanum.learned_dark.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "arcanum:dark_spell_book"
+    },
+    "title": {
+      "translate": "advancements.arcanum.learned_dark.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dark_book"
+    ]
+  ],
+  "rewards": {
+    "experience": 40
+  }
+}

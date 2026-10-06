@@ -1,0 +1,36 @@
+{
+  "parent": "arcanum:root",
+  "criteria": {
+    "has_arcanewood_wand": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcanum:arcanewood_wand"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.arcanum.first_wand.description"
+    },
+    "icon": {
+      "item": "arcanum:arcanewood_wand"
+    },
+    "title": {
+      "translate": "advancements.arcanum.first_wand.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_arcanewood_wand"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  }
+}

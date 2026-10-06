@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "arcanum:block/stripped_arcanewood_log"
+    },
+    "axis=z": {
+      "model": "arcanum:block/stripped_arcanewood_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "arcanum:block/stripped_arcanewood_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

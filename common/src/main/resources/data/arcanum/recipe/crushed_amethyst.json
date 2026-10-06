@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    { "item": "minecraft:amethyst_shard" }
+  ],
+  "result": { "id": "arcanum:crushed_amethyst", "count": 2 }
+}

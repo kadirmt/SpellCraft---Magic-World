@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "has_arcanewood_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "arcanum:arcanewood_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/block/deepslate_bricks.png",
+    "description": {
+      "translate": "advancements.arcanum.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "arcanum:arcanewood_wand"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.arcanum.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_arcanewood_log"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  }
+}

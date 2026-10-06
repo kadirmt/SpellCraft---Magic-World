@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "arcanum:block/spell_table"
+    },
+    "facing=east": {
+      "model": "arcanum:block/spell_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "arcanum:block/spell_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arcanum:block/spell_table",
+      "y": 270
+    }
+  }
+}

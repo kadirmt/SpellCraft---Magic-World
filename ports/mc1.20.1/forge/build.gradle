@@ -1,0 +1,71 @@
+plugins {
+    id "com.gradleup.shadow"
+}
+
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+
+// NOT: Modda accesswidener yok — template'teki accessWidenerPath /
+// convertAccessWideners / extraAccessWideners satırları bilinçli olarak yok.
+
+loom {
+    forge {
+        // Forge mixin bildirimi (fabric'inkiyle jar içinde çakışmasın diye AYRI ad):
+        // HumanoidArmorLayerMixin (pelerin zırh katmanı iptali — bu olmadan
+        // ModArmorMaterials 'arcanum:cloak_of_invisibility' doku yolundan
+        // ResourceLocationException CRASH olur) + WandItemMixin (GeckoLib asa
+        // renderer'ının initializeClient köprüsü).
+        mixinConfig "arcanum-forge.mixins.json"
+    }
+}
+
+configurations {
+    common
+    shadowBundle
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+}
+
+dependencies {
+    forge "net.minecraftforge:forge:${rootProject.forge_version}"
+
+    modApi "dev.architectury:architectury-forge:${rootProject.architectury_api_version}"
+
+    // GeckoLib — animasyonlu modeller/itemlar (runtime + render)
+    modImplementation "software.bernie.geckolib:geckolib-forge-1.20.1:${rootProject.geckolib_version}"
+    // GeckoLib'in transitif molang kütüphanesi (com.eliotlash.mclib) Forge dev
+    // runtime'ında transforming classloader'a görünmez → istemci resource reload
+    // sırasında NoClassDefFoundError: com/eliotlash/mclib/math/IValue CRASH.
+    // forgeRuntimeLibrary yalnız dev classpath'ine ekler (üretim jar'ı etkilenmez;
+    // yayınlanan GeckoLib forge jar'ı mclib'i zaten shade'ler).
+    forgeRuntimeLibrary "com.eliotlash.mclib:mclib:20"
+
+    // TerraBlender — maven.minecraftforge.net üzerinden
+    modImplementation "com.github.glitchfiend:TerraBlender-forge:${rootProject.terrablender_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowBundle project(path: ":common", configuration: "transformProductionForge")
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
+shadowJar {
+    exclude "fabric.mod.json"
+    exclude "architectury.common.json"
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = "dev-shadow"
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier = null
+}

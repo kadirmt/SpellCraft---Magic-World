@@ -1,0 +1,36 @@
+{
+  "parent": "arcanum:phoenix_wand",
+  "criteria": {
+    "has_elder_wand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "arcanum:elder_wand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.arcanum.elder_wand.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "arcanum:elder_wand"
+    },
+    "title": {
+      "translate": "advancements.arcanum.elder_wand.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_elder_wand"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

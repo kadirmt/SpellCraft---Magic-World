@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  A",
+    " P ",
+    "P  "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "P": {
+      "item": "arcanum:arcanewood_planks"
+    }
+  },
+  "result": {
+    "item": "arcanum:arcanewood_wand",
+    "count": 1
+  }
+}

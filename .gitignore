@@ -1,0 +1,61 @@
+# Gradle / build
+.gradle/
+build/
+*/build/
+out/
+bin/
+
+# Loom / Minecraft run dirs
+run/
+*/run/
+.architectury-transformer/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+.eclipse/
+
+# OS / misc
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Local tooling (not part of repo)
+.arcanum-tools/
+
+# Downloaded JDK / large binaries
+*.zip
+
+# Yerel bağımlılık jar'ları (TerraBlender — maven erişilemez)
+/libs/
+
+# Python
+__pycache__/
+*.pyc
+
+# Private AI notes and local agent workspaces
+.claude/
+.codex/
+.agents/
+**/AGENTS.md
+**/CLAUDE.md
+**/GEMINI.md
+/DESIGN.md
+/research_brief.md
+/ports/*.md
+/ports/_planning*/
+/ports/_testbed/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key

@@ -1,0 +1,55 @@
+plugins {
+    id "com.gradleup.shadow"
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+configurations {
+    common
+    shadowBundle
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+
+    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_api_version}"
+
+    // GeckoLib — animasyonlu modeller/itemlar (runtime + render)
+    modImplementation "software.bernie.geckolib:geckolib-fabric-1.20.1:${rootProject.geckolib_version}"
+
+    // TerraBlender — maven.minecraftforge.net üzerinden (kökteki libs/ jar hilesi YOK)
+    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${rootProject.terrablender_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowBundle project(path: ":common", configuration: "transformProductionFabric")
+
+    // REI — SADECE geliştirme istemcisi (jar'a girmez). Kod taşıma fazında gerekirse aç:
+    // modLocalRuntime "me.shedaniel.cloth:cloth-config-fabric:${rootProject.cloth_config_version}"
+    // modLocalRuntime "me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.rei_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+shadowJar {
+    exclude "architectury.common.json"
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = "dev-shadow"
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier = null
+}

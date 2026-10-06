@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+   "textures": {
+    "bottom": "arcanum:block/arcanewood_door_bottom",
+    "top": "arcanum:block/arcanewood_door_top"
+  }
+}

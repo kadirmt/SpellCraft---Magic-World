@@ -1,0 +1,128 @@
+// Arcanum — Fabric 26.1.2 portu (Loom 1.17.21, remap'siz; Architectury YOK)
+// Temel: ports/_planning26/res-fabric-dogrulama-iskeleti/verify261 (derlenmis iskelet) + res-fabric.md §5
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_name   // -> arcanum-fabric-26.1.2-0.0.1.jar
+}
+
+repositories {
+	maven {
+		name = 'GeckoLib'
+		url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content { includeGroup('com.geckolib') }
+	}
+	maven {
+		name = 'MinecraftForge (TerraBlender)'
+		url = 'https://maven.minecraftforge.net/'
+		content { includeGroup('com.github.glitchfiend') }
+	}
+}
+
+// Ortak (loader-bagimsiz) kaynak: ../common — ayri Gradle projesi DEGIL, yalniz ek srcDir (ARCHITECTURE §2).
+sourceSets {
+	main {
+		java { srcDir '../common/src/main/java' }
+		resources { srcDir '../common/src/main/resources' }
+	}
+	// DEV-ONLY istemci test duzenegi (ports/mc26.1.2/devtest, ports/_planning26/g4-devtest.md):
+	// ayri sourceSet -> ana jar/sourcesJar'a GIRMEZ; yalniz runDevtestClient'in sinif yolunda ("arcanum_devtest" modu).
+	devtest {
+		java { srcDirs = ['../devtest/src/main/java', '../devtest/fabric/src/main/java'] }
+		resources { srcDirs = ['../devtest/fabric/src/main/resources'] }
+		compileClasspath += main.compileClasspath + main.output
+		runtimeClasspath += main.runtimeClasspath + main.output
+	}
+}
+
+loom {
+	runs {
+		// Sunucu 'run/', istemci 'run-client/' — ikisi AYNI ANDA acikken logs/latest.log cakismasin
+		// (quickPlayMultiplayer dogrulamasi: gradlew runClient --args="--quickPlayMultiplayer 127.0.0.1:25570")
+		client {
+			runDir "run-client"
+		}
+		// DEV-ONLY: arcanum + arcanum_devtest modlariyla istemci (gorev: runDevtestClient). Duzenek
+		// -Parcanum.devtest=<liste> (+ .out/.world/.quit) verilmezse HICBIR SEY yapmaz.
+		devtestClient {
+			client()
+			configName = "Devtest Client"
+			runDir "run-client"
+			source sourceSets.devtest
+			['arcanum.devtest', 'arcanum.devtest.out', 'arcanum.devtest.world', 'arcanum.devtest.quit'].each { k ->
+				def v = project.findProperty(k)
+				if (v != null) {
+					property(k, v.toString())
+				}
+			}
+		}
+	}
+	mods {
+		"arcanum" {
+			sourceSet sourceSets.main
+		}
+		"arcanum_devtest" {
+			sourceSet sourceSets.devtest
+		}
+	}
+}
+
+fabricApi {
+	configureTests {
+		// `gradlew build` sunucu gametest KOSMASIN (ARCHITECTURE §6). Istemci gametest'i G7'de acilir.
+		enableGameTests = false
+		enableClientGameTests = false
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// transitive=false: metadata'larin kendi loader/fabric-api surumlerini dayatmasini engeller (ARCHITECTURE §1)
+	implementation("com.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib_version}") { transitive = false }
+	implementation("com.github.glitchfiend:TerraBlender-fabric:${project.terrablender_version}") { transitive = false }
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+// DEV-ONLY (G8 uretim istemci testi): test duzenegini gercek bir Fabric kurulumuna koymak icin AYRI jar.
+// Ana jar/sourcesJar'a ve `build`/`assemble`'a BAGLI DEGIL (yalniz adiyla: gradlew devtestJar); cikti build/libs DISINDA
+// (build/devtest-libs) -> yayin jar'iyla karismaz. 26.x remap'siz oldugu icin duz Jar yeterli. ASLA kullanici paketine girmez.
+tasks.register('devtestJar', Jar) {
+	group = 'arcanum devtest'
+	description = 'arcanum_devtest dev-only modunu (sourceSets.devtest) ayri bir jar olarak paketler (yayin DEGIL).'
+	from sourceSets.devtest.output
+	archiveBaseName = 'arcanum_devtest-fabric-26.1.2'
+	archiveVersion = project.mod_version
+	archiveClassifier = 'dev-only'
+	destinationDirectory = layout.buildDirectory.dir('devtest-libs')
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = "UTF-8"
+	it.options.release = 25
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+// Derleme döngüsü tüm hataları tek turda görsün (javac varsayılanı 100'de keser)
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xmaxerrs', '10000']
+}

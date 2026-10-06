@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "arcanum:block/arcanewood_log_top",
+    "side": "arcanum:block/arcanewood_log"
+  }
+}

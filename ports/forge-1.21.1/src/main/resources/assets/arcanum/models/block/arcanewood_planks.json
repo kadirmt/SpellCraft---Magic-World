@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "arcanum:block/arcanewood_planks"
+  }
+}

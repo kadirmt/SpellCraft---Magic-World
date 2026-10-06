@@ -1,0 +1,16 @@
+{
+  "parent": "arcanum:root",
+  "display": {
+    "icon": { "id": "arcanum:broom" },
+    "title": { "translate": "advancements.arcanum.broom_rider.title" },
+    "description": { "translate": "advancements.arcanum.broom_rider.description" },
+    "frame": "goal"
+  },
+  "criteria": {
+    "has_broom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { "items": [ { "items": "arcanum:broom" } ] }
+    }
+  },
+  "rewards": { "experience": 25 }
+}

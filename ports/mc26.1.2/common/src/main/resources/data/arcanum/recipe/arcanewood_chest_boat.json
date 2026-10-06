@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "arcanum:arcanewood_boat",
+    "minecraft:chest"
+  ],
+  "result": {
+    "id": "arcanum:arcanewood_chest_boat",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "transportation",
+  "ingredients": [
+    {
+      "item": "arcanum:arcanewood_boat"
+    },
+    {
+      "item": "minecraft:chest"
+    }
+  ],
+  "result": {
+    "item": "arcanum:arcanewood_chest_boat",
+    "count": 1
+  }
+}

@@ -1,0 +1,44 @@
+# Arcanum — MinecraftForge 1.21.1 portu
+# Referans: https://docs.minecraftforge.net/en/1.21.x/gettingstarted/modfiles/#modstoml
+
+modLoader="javafml"
+loaderVersion="[52,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="arcanum"
+version="0.0.1"
+displayName="Arcanum"
+authors="Arcanum"
+description='''Arcanum — Harry Potter buyu modu (MinecraftForge 1.21.1 portu).'''
+
+# ATs simdilik yok; bos liste yukleme performansi icin opt-out saglar
+accessTransformers = []
+
+[[dependencies.arcanum]]
+    modId="forge"
+    mandatory=true
+    versionRange="[52,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.arcanum]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.21.1,1.22)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.arcanum]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[4.7,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.arcanum]]
+    modId="terrablender"
+    mandatory=true
+    versionRange="[4.1,)"
+    ordering="AFTER"
+    side="BOTH"

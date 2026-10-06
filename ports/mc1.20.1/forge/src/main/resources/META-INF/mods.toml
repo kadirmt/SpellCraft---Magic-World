@@ -1,0 +1,49 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "ARR"
+
+[[mods]]
+modId = "arcanum"
+version = "${version}"
+displayName = "Arcanum"
+authors = "Kadir Mert"
+description = '''A modern wizarding-world mod: craft tiered wands, master spells from Lumos to the Unforgivable Curses, ride a flying broom, face Death Eaters and Dementors in the gloom, and hunt spell books hidden across the world.'''
+logoFile = "assets/arcanum/icon.png"
+
+[[dependencies.arcanum]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.arcanum]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1]"
+ordering = "NONE"
+side = "BOTH"
+
+# Kütüphane bağımlılıkları — fabric.mod.json "depends" bloğunun karşılığı
+# (architectury ≥9.2, geckolib ≥4.8, terrablender ≥3.0; hepsi zorunlu).
+# ordering=AFTER: kütüphaneler arcanum'dan ÖNCE yüklensin.
+[[dependencies.arcanum]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.2,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.arcanum]]
+modId = "geckolib"
+mandatory = true
+versionRange = "[4.8,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.arcanum]]
+modId = "terrablender"
+mandatory = true
+versionRange = "[3.0,)"
+ordering = "AFTER"
+side = "BOTH"

@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": ["arcanum:arcanewood_grove"],
+  "spawners": [
+    { "type": "arcanum:mooncalf", "weight": 45, "minCount": 1, "maxCount": 3 },
+    { "type": "arcanum:bowtruckle", "weight": 45, "minCount": 1, "maxCount": 3 }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  B",
+    " W ",
+    "G  "
+  ],
+  "key": {
+    "B": "minecraft:blaze_rod",
+    "W": "arcanum:arcanewood_wand",
+    "G": "minecraft:gold_ingot"
+  },
+  "result": { "id": "arcanum:phoenix_wand", "count": 1 }
+}

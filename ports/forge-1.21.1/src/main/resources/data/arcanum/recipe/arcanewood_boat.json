@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "transportation",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "arcanum:arcanewood_planks"
+    }
+  },
+  "result": {
+    "id": "arcanum:arcanewood_boat",
+    "count": 1
+  }
+}

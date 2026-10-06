@@ -1,0 +1,37 @@
+{
+  "parent": "arcanum:first_wand",
+  "criteria": {
+    "has_phoenix_wand": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcanum:phoenix_wand"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.arcanum.phoenix_wand.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "item": "arcanum:phoenix_wand"
+    },
+    "title": {
+      "translate": "advancements.arcanum.phoenix_wand.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_phoenix_wand"
+    ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
+}

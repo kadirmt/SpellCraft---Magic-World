@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "arcanum:cloak_of_invisibility"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "arcanum:cloak_of_invisibility"
+      }
+    ]
+  }
+}

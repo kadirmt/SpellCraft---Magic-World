@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "arcanum:block/warded_door_bottom",
+    "top": "arcanum:block/warded_door_top"
+  }
+}

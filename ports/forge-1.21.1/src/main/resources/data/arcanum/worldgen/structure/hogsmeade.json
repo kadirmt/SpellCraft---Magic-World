@@ -1,0 +1,7 @@
+{
+  "type": "arcanum:hogsmeade",
+  "biomes": "#arcanum:has_structure/hogsmeade",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin"
+}

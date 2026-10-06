@@ -1,0 +1,16 @@
+architectury {
+    common rootProject.enabled_platforms.split(",")
+}
+
+dependencies {
+    // Loom dev ortamı için common'da fabric-loader gerekir (template notu: yalnız @Environment + mixin bağımlılıkları)
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    // Cross-loader API (Registry/Event soyutlamaları) — common'da kullanılır
+    modApi "dev.architectury:architectury:${rootProject.architectury_api_version}"
+    // GeckoLib — common'da yalnızca derleme için (GeoItem vb. arayüzler)
+    modCompileOnly "software.bernie.geckolib:geckolib-fabric-1.20.1:${rootProject.geckolib_version}"
+    // Fabric API — common'da yalnızca derleme için (FabricItem arayüzü vb.)
+    modCompileOnly "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    // TerraBlender — maven'dan (kökteki libs/ jar hilesi YOK); common'da yalnızca derleme için
+    modCompileOnly "com.github.glitchfiend:TerraBlender-fabric:${rootProject.terrablender_version}"
+}

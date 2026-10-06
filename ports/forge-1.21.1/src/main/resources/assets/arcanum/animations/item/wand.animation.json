@@ -1,0 +1,79 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.wand.idle": {
+      "loop": true,
+      "animation_length": 4.0,
+      "bones": {
+        "wand_root": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "2.0": [
+              0,
+              0.35,
+              0
+            ],
+            "4.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.wand.cast": {
+      "loop": false,
+      "animation_length": 0.4,
+      "bones": {
+        "wand_root": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.1": [
+              -28,
+              0,
+              0
+            ],
+            "0.25": [
+              10,
+              0,
+              0
+            ],
+            "0.4": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "tip": {
+          "scale": {
+            "0.0": [
+              1,
+              1,
+              1
+            ],
+            "0.12": [
+              1.7,
+              1.7,
+              1.7
+            ],
+            "0.4": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    }
+  }
+}

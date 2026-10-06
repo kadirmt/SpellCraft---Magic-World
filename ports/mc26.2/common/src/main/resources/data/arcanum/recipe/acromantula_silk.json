@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:string",
+    "minecraft:spider_eye"
+  ],
+  "result": { "id": "arcanum:acromantula_silk", "count": 1 }
+}

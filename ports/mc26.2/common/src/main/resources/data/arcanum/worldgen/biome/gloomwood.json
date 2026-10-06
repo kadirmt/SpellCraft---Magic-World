@@ -1,0 +1,135 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.7,
+  "downfall": 0.8,
+  "creature_spawn_probability": 0.2,
+  "attributes": {
+    "minecraft:visual/sky_color": "#3a3448",
+    "minecraft:visual/fog_color": "#2e2a3c",
+    "minecraft:visual/water_fog_color": "#1e2e33",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "arcanum:leaf_mote"
+        },
+        "probability": 0.004
+      }
+    ],
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 6000,
+        "block_search_extent": 8,
+        "offset": 2.0
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "minecraft:music.overworld.forest",
+        "min_delay": 12000,
+        "max_delay": 24000
+      },
+      "creative": {
+        "sound": "minecraft:music.creative",
+        "min_delay": 12000,
+        "max_delay": 24000
+      }
+    }
+  },
+  "effects": {
+    "water_color": "#3d5b66",
+    "grass_color": "#4e7a66",
+    "foliage_color": "#3fa893"
+  },
+  "spawners": {
+    "creature": [],
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:zombie",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:creeper",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 8,
+        "maxCount": 8
+      }
+    ]
+  },
+  "spawn_costs": {
+    "arcanum:dementor": {
+      "energy_budget": 0.15,
+      "charge": 0.7
+    }
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_redstone",
+      "minecraft:ore_diamond",
+      "minecraft:ore_lapis",
+      "minecraft:ore_copper"
+    ],
+    [
+      "minecraft:glow_lichen"
+    ],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "arcanum:arcanewood_trees_gloomwood",
+      "minecraft:patch_grass_forest",
+      "minecraft:brown_mushroom_normal"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "arcanum:custom/spell_table",
+  "textures": {
+    "all": "arcanum:block/spell_table",
+    "particle": "arcanum:block/spell_table",
+    "0": "arcanum:block/spell_table"
+  }
+}

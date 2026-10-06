@@ -1,0 +1,110 @@
+// Arcanum — MinecraftForge 1.21.1 portu (ForgeGradle 7, tek modül, Architectury YOK)
+// Temel: resmi Forge 1.21.1-52.1.15 MDK + MDKExamples 'mixins-only/fg7' deseni
+// https://github.com/MinecraftForge/MDKExamples
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
+}
+
+version = mod_version
+group = maven_group
+base.archivesName = 'arcanum-forge-1.21.1'
+
+// Mojang ships Java 21 to end users in 1.20.5+, so your mod should target Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// Include generated resources
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+minecraft {
+    mappings channel: 'official', version: '1.21.1'
+
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+
+            // Mixin: dev run'larda config komut satiri arg'iyla verilmek zorunda
+            // (jar manifest'indeki MixinConfigs yalniz production'da okunur)
+            args "--mixin.config=${mod_id}.mixins.json"
+        }
+
+        register('client') {
+            // GECICI (spawn deneyi): ayri calisma dizini + sunucuya otomatik baglanma
+            workingDir = layout.projectDirectory.dir('run-client')
+            args '--quickPlayMultiplayer', '127.0.0.1:25567'
+        }
+
+        register('server') {
+            args '--nogui'
+        }
+
+        register('gameTestServer')
+
+        register('data') {
+            workingDir = layout.projectDirectory.dir('run-data')
+
+            args '--mod', mod_id, '--all', '--output', layout.projectDirectory.dir('src/generated/resources'), '--existing', layout.projectDirectory.dir('src/main/resources')
+        }
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it) // In Kotlin, it = this
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+
+    // GeckoLib (resmi Cloudsmith maven)
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'GeckoLib'
+                url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            }
+        }
+        filter {
+            includeGroup 'software.bernie.geckolib'
+        }
+    }
+
+    // TerraBlender (maven.minecraftforge.net uzerinde yayimlaniyor)
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'TerraBlender'
+                url = 'https://maven.minecraftforge.net'
+            }
+        }
+        filter {
+            includeGroup 'com.github.glitchfiend'
+        }
+    }
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+
+    // 1.20.5+ mojmap runtime oldugundan fg.deobf GEREKMEZ — duz implementation yeterli
+    implementation "software.bernie.geckolib:geckolib-forge-1.21.1:${geckolib_version}"
+    implementation "com.github.glitchfiend:TerraBlender-forge:${terrablender_version}"
+
+    // Mixin annotation processor (MixinGradle 1.20.5+ icin gerekmez; refmap yok)
+    annotationProcessor 'org.spongepowered:mixin:0.8.7:processor'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // Use the UTF-8 charset for Java compilation
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        // Production'da Mixin'in bizi bulmasi icin config jar manifest'ine yazilir
+        attributes['MixinConfigs'] = "${mod_id}.mixins.json"
+    }
+}

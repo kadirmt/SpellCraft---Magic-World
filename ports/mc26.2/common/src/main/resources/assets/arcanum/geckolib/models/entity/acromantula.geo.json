@@ -1,0 +1,143 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.acromantula",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 3.5,
+        "visible_bounds_height": 2,
+        "visible_bounds_offset": [0, 0.7, 0]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [0, 0, 0]
+        },
+        {
+          "name": "abdomen",
+          "parent": "root",
+          "pivot": [0, 10, 6],
+          "cubes": [
+            { "origin": [-4.5, 6, 1.5], "size": [9, 8, 9], "inflate": 0.2, "uv": [0, 0] }
+          ]
+        },
+        {
+          "name": "cephalothorax",
+          "parent": "root",
+          "pivot": [0, 10, -3],
+          "cubes": [
+            { "origin": [-3.5, 7, -6], "size": [7, 6, 6], "inflate": 0.15, "uv": [36, 0] }
+          ]
+        },
+        {
+          "name": "eye_cluster",
+          "parent": "cephalothorax",
+          "pivot": [0, 11.5, -6.5],
+          "cubes": [
+            { "origin": [-1.5, 10.5, -7], "size": [3, 1, 1], "uv": [0, 17] }
+          ]
+        },
+        {
+          "name": "fang_l",
+          "parent": "cephalothorax",
+          "pivot": [1.2, 8, -6.5],
+          "rotation": [20, 0, 8],
+          "cubes": [
+            { "origin": [0.7, 6.3, -7.3], "size": [1, 2, 1], "uv": [8, 17] }
+          ]
+        },
+        {
+          "name": "fang_r",
+          "parent": "cephalothorax",
+          "pivot": [-1.2, 8, -6.5],
+          "rotation": [20, 0, -8],
+          "cubes": [
+            { "origin": [-1.7, 6.3, -7.3], "size": [1, 2, 1], "uv": [12, 17] }
+          ]
+        },
+        {
+          "name": "leg1_l",
+          "parent": "cephalothorax",
+          "pivot": [3.5, 10, -5.5],
+          "rotation": [0, 0, 58],
+          "cubes": [
+            { "origin": [3.5, 9.5, -6], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 21] },
+            { "origin": [7, 6.5, -6], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, -46], "pivot": [7, 10, -5.5], "uv": [10, 21] }
+          ]
+        },
+        {
+          "name": "leg1_r",
+          "parent": "cephalothorax",
+          "pivot": [-3.5, 10, -5.5],
+          "rotation": [0, 0, -58],
+          "cubes": [
+            { "origin": [-7.5, 9.5, -6], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 21] },
+            { "origin": [-12, 6.5, -6], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, 46], "pivot": [-7, 10, -5.5], "uv": [10, 21] }
+          ]
+        },
+        {
+          "name": "leg2_l",
+          "parent": "cephalothorax",
+          "pivot": [3.5, 10, -3.5],
+          "rotation": [0, 0, 62],
+          "cubes": [
+            { "origin": [3.5, 9.5, -4], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 27] },
+            { "origin": [7, 6.3, -4], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, -50], "pivot": [7, 10, -3.5], "uv": [10, 27] }
+          ]
+        },
+        {
+          "name": "leg2_r",
+          "parent": "cephalothorax",
+          "pivot": [-3.5, 10, -3.5],
+          "rotation": [0, 0, -62],
+          "cubes": [
+            { "origin": [-7.5, 9.5, -4], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 27] },
+            { "origin": [-12, 6.3, -4], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, 50], "pivot": [-7, 10, -3.5], "uv": [10, 27] }
+          ]
+        },
+        {
+          "name": "leg3_l",
+          "parent": "cephalothorax",
+          "pivot": [3.5, 10, -1.5],
+          "rotation": [0, 0, 62],
+          "cubes": [
+            { "origin": [3.5, 9.5, -2], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 33] },
+            { "origin": [7, 6.3, -2], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, -50], "pivot": [7, 10, -1.5], "uv": [10, 33] }
+          ]
+        },
+        {
+          "name": "leg3_r",
+          "parent": "cephalothorax",
+          "pivot": [-3.5, 10, -1.5],
+          "rotation": [0, 0, -62],
+          "cubes": [
+            { "origin": [-7.5, 9.5, -2], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 33] },
+            { "origin": [-12, 6.3, -2], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, 50], "pivot": [-7, 10, -1.5], "uv": [10, 33] }
+          ]
+        },
+        {
+          "name": "leg4_l",
+          "parent": "cephalothorax",
+          "pivot": [3.5, 10, 0.5],
+          "rotation": [0, 0, 56],
+          "cubes": [
+            { "origin": [3.5, 9.5, 0], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 39] },
+            { "origin": [7, 6.5, 0], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, -44], "pivot": [7, 10, 0.5], "uv": [10, 39] }
+          ]
+        },
+        {
+          "name": "leg4_r",
+          "parent": "cephalothorax",
+          "pivot": [-3.5, 10, 0.5],
+          "rotation": [0, 0, -56],
+          "cubes": [
+            { "origin": [-7.5, 9.5, 0], "size": [4, 1, 1], "inflate": 0.1, "uv": [0, 39] },
+            { "origin": [-12, 6.5, 0], "size": [5, 1, 1], "inflate": 0.1, "rotation": [0, 0, 44], "pivot": [-7, 10, 0.5], "uv": [10, 39] }
+          ]
+        }
+      ]
+    }
+  ]
+}

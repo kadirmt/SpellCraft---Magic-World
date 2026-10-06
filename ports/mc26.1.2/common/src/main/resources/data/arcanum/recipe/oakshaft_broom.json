@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    " S ",
+    "WPW"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "P": "#minecraft:planks",
+    "W": "minecraft:string"
+  },
+  "result": { "id": "arcanum:oakshaft_broom", "count": 1 }
+}

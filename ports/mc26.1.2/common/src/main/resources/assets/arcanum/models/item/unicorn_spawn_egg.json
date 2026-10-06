@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arcanum:item/unicorn_spawn_egg"
+  }
+}

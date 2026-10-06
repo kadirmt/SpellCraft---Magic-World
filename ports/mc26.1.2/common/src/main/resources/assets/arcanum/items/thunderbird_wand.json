@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "arcanum:item/thunderbird_wand",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  },
+  "oversized_in_gui": true
+}

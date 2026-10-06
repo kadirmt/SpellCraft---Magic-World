@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.arcanum.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FireBlockInvoker",
+    "datafix.V1460EntitiesMixin"
+  ],
+  "client": [
+    "client.CustomHeadLayerMixin",
+    "client.ForgeMultiPlayerGameModeMixin",
+    "client.HumanoidArmorLayerMixin",
+    "client.ItemInHandLayerMixin",
+    "client.LevelRendererMixin",
+    "client.LivingEntityRendererMixin",
+    "client.LivingEntityRenderStateMixin",
+    "client.MouseHandlerMixin",
+    "client.WingsLayerMixin",
+    "client.render.RenderPipelinesInvoker",
+    "client.render.RenderTypeInvoker"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

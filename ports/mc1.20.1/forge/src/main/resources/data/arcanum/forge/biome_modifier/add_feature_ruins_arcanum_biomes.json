@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": ["arcanum:gloomwood", "arcanum:arcanewood_grove"],
+  "features": ["arcanum:arcane_ruin", "arcanum:death_eater_camp"],
+  "step": "surface_structures"
+}

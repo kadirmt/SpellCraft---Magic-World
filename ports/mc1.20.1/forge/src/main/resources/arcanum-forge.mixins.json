@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.arcanum.forge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "CustomHeadLayerMixin",
+    "ElytraLayerMixin",
+    "HumanoidArmorLayerMixin",
+    "ItemInHandLayerMixin",
+    "WandItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

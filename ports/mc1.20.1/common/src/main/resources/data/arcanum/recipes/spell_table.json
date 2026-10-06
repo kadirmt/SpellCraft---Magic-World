@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "APA",
+    "PBP",
+    "PLP"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "P": {
+      "item": "arcanum:arcanewood_planks"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "result": {
+    "item": "arcanum:spell_table",
+    "count": 1
+  }
+}

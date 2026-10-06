@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:honeycomb",
+    "minecraft:glowstone_dust"
+  ],
+  "result": { "id": "arcanum:enchanted_honeycomb", "count": 2 }
+}

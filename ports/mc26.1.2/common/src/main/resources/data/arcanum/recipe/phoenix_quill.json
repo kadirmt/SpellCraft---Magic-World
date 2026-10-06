@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "arcanum:phoenix_feather",
+    "minecraft:ink_sac"
+  ],
+  "result": { "id": "arcanum:phoenix_quill", "count": 1 }
+}

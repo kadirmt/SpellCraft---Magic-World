@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "arcanum",
+  "version": "${version}",
+  "name": "Arcanum",
+  "description": "A modern wizarding-world mod: craft tiered wands, master spells from Lumos to the Unforgivable Curses, ride a flying broom, face Death Eaters and Dementors in the gloom, and hunt spell books hidden across the world.",
+  "authors": ["Kadir Mert"],
+  "contact": {},
+  "license": "ARR",
+  "icon": "assets/arcanum/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.arcanum.fabric.ArcanumFabric"],
+    "client": ["com.arcanum.fabric.client.ArcanumFabricClient"],
+    "terrablender": ["com.arcanum.fabric.worldgen.ArcanumTerraBlender"]
+  },
+  "mixins": [
+    "arcanum.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "architectury": ">=13.0.0",
+    "geckolib": ">=4.7.0",
+    "terrablender": ">=4.1.0"
+  }
+}

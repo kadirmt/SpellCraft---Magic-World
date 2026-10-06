@@ -1,0 +1,19 @@
+{
+  "type": "arcanum:azkaban",
+  "biomes": "#arcanum:has_structure/azkaban",
+  "step": "surface_structures",
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "arcanum:dementor",
+          "weight": 1,
+          "minCount": 1,
+          "maxCount": 2
+        }
+      ]
+    }
+  },
+  "terrain_adaptation": "none"
+}

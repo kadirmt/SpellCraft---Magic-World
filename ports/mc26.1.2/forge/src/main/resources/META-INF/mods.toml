@@ -1,0 +1,39 @@
+modLoader="javafml"
+loaderVersion="[64,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="arcanum"
+version="0.0.1"
+displayName="Arcanum"
+authors="Kadir Mert"
+logoFile="icon.png"
+description='''A modern wizarding-world mod: craft tiered wands, master spells from Lumos to the Unforgivable Curses, ride a flying broom, face Death Eaters and Dementors in the gloom, and hunt spell books hidden across the world.'''
+
+[[dependencies.arcanum]]
+    modId="forge"
+    mandatory=true
+    versionRange="[64.1.0,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.arcanum]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[26.1.2,26.2)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.arcanum]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[5.5.2,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.arcanum]]
+    modId="terrablender"
+    mandatory=true
+    versionRange="[26.1.2.0.3,)"
+    ordering="AFTER"
+    side="BOTH"
