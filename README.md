@@ -2,10 +2,11 @@
 
 A Harry Potter-inspired magic mod for Minecraft. Craft a wand, learn spells at the Spell Table, level up your wizard, duel other players live, brew potions, and raid a dementor-guarded prison to reach a Basilisk boss.
 
-[![CurseForge downloads](https://img.shields.io/badge/CurseForge-3.7K%2B%20downloads-orange)](https://www.curseforge.com/minecraft/mc-mods/spellcraft-magic-world)
+[![CurseForge](https://img.shields.io/badge/CurseForge-3.7K%2B%20downloads-orange)](https://www.curseforge.com/minecraft/mc-mods/spellcraft-magic-world)
+[![Modrinth](https://img.shields.io/badge/Modrinth-1.8K%2B%20downloads-green)](https://modrinth.com/mod/spellcraft-magic-world)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Download:** [SpellCraft – Magic World on CurseForge](https://www.curseforge.com/minecraft/mc-mods/spellcraft-magic-world)
+**Download:** [CurseForge](https://www.curseforge.com/minecraft/mc-mods/spellcraft-magic-world) · [Modrinth](https://modrinth.com/mod/spellcraft-magic-world) — over 5,500 downloads combined.
 
 ## Features
 
@@ -26,7 +27,7 @@ A Harry Potter-inspired magic mod for Minecraft. Craft a wand, learn spells at t
 | 1.21.1    | Forge, Fabric |
 | 1.20.1    | Forge, Fabric |
 
-Pre-built jars are published on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/spellcraft-magic-world). The latest release is 0.0.6.
+Pre-built jars are published on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/spellcraft-magic-world) and [Modrinth](https://modrinth.com/mod/spellcraft-magic-world). The latest release is 0.0.6.
 
 ## Repository layout
 
@@ -52,7 +53,7 @@ Requires operator permission.
 
 ## Status
 
-The author does not plan further updates, so the mod has been released as open source. Bug reports, forks and pull requests are welcome.
+The author does not plan further updates, so the mod has been released as open source. Bug reports, forks and pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Credits
 
